@@ -24,6 +24,7 @@ const cardList = [
   },
 ]
 
+
 function App() {
   return (
     <div className="wrapper clear">
