@@ -38,6 +38,7 @@ function App() {
             </button>
           </div>
         </div>
+        
         <div className="card">
           <img width={133} height={112} src="/img/sneakers/2.jpg" alt="Sneakers" />
           <h5>Мужские Кроссовки Nike Blazer Mid Suede</h5>
