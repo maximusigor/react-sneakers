@@ -40,6 +40,7 @@ function App() {
                     <span>Ціна:</span>
                     <b>2999 грн.</b>
                 </div>
+                
                 <button className="button">
                     <img width={11} height={11} src="/img/plus.svg" alt="Plus" />
                 </button>
