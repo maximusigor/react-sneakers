@@ -1,11 +1,16 @@
-export const Card = ({ title, price, imagePath }) =>  (
+
+function Card() {
+    return (
         <div className="card">
-            <img src={imagePath} style={{ width: 133, height: 112 }} alt="Sneakers" />
-            <h5>{title}</h5>
+            <div className="favorite">
+                <img src="/img/heart-unliked.svg" alt="Unliked" />
+            </div>
+            <img src="/img/sneakers/1.jpg" style={{ width: 133, height: 112 }} alt="Sneakers" />
+            <h5>Чоловічі кросівки Nike Blazer Mid Suede</h5>
             <div className="d-flex justify-between align-center">
                 <div className="d-flex flex-column">
                     <span>Ціна:</span>
-                    <b>{price} грн.</b>
+                    <b>2999 грн.</b>
                 </div>
 
                 <button className="button">
@@ -14,3 +19,6 @@ export const Card = ({ title, price, imagePath }) =>  (
             </div>
         </div>
     );
+}
+
+export default Card;
