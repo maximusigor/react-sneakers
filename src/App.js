@@ -1,3 +1,4 @@
+import React from 'react';
 import Card from './components/Card';
 import Header from './components/Header';
 import Drawer from './components/Drawer';
@@ -26,8 +27,8 @@ const arr = [
 ];
 
 function App() {
-  
   return (
+    
     <div className="wrapper clear">
 
       <Drawer />
