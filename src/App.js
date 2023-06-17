@@ -1,6 +1,6 @@
 import Card from './components/Card';
 import Header from './components/Header';
-import Drawer from './components/Drawer.js';
+import Drawer from './components/Drawer';
 
 const arr = [
   {
@@ -34,6 +34,7 @@ function App() {
       <Header />
 
       <div className="content p-40">
+
         <div className="d-flex align-center mb-40 justify-between">
           <h1>Всі кросівки</h1>
           <div className="search-block d-flex">
@@ -43,15 +44,15 @@ function App() {
         </div>
 
         <div className="d-flex">
-
           {arr.map(obj => (
             <Card 
               title={obj.title}
               price={obj.price}
               imageUrl={obj.imageUrl}
+              onClickFavorite={() => console.log('Add to bookmarks')}
+              onPlus={() => console.log('Add to cart')}
             /> 
           ))}
-
         </div>
 
       </div>
