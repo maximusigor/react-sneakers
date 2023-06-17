@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Card from './components/Card';
 import Header from './components/Header';
 import Drawer from './components/Drawer';
@@ -28,6 +28,11 @@ const arr = [
 
 function App() {
   const [search, setSearch] = useState('');
+  // const [chooses, setChooses] = useState([]);
+  //
+  // useEffect(() => {
+  //   setChooses(arr.filter((item) => item.title.includes(search)))
+  // }, [search])
 
   const chooses = useMemo(() => {
      return arr.filter((item) => item.title.includes(search))
