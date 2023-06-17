@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import Card from './components/Card';
 import Header from './components/Header';
 import Drawer from './components/Drawer';
@@ -27,10 +27,14 @@ const arr = [
 ];
 
 function App() {
-  return (
-    
-    <div className="wrapper clear">
+  const [search, setSearch] = useState('');
 
+  const chooses = useMemo(() => {
+     return arr.filter((item) => item.title.includes(search))
+  }, [search]);
+
+  return (
+    <div className="wrapper clear">
       <Drawer />
       <Header />
 
@@ -40,19 +44,19 @@ function App() {
           <h1>Всі кросівки</h1>
           <div className="search-block d-flex">
             <img src="/img/search.svg" alt="Search" />
-            <input placeholder="Пошук..." />
+            <input placeholder="Пошук..." onChange={(e) => setSearch(e.target.value)} />
           </div>
         </div>
 
         <div className="d-flex">
-          {arr.map(obj => (
-            <Card 
+          {chooses.map(obj => (
+            <Card
               title={obj.title}
               price={obj.price}
               imageUrl={obj.imageUrl}
               onClickFavorite={() => console.log('Add to bookmarks')}
               onPlus={() => console.log('Add to cart')}
-            /> 
+            />
           ))}
         </div>
 
