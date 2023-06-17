@@ -8,12 +8,18 @@ function Card(props) {
         setIsAdded(true);
     }
 
+    const [isAddedFavorite, setIsAddedFavorite] = React.useState(false);
+
+    const onClickFavorite = () => {
+        setIsAddedFavorite(true);
+    }
+
     
     return (
         <div className={styles.card}>
 
-            <div className={styles.favorite} onClick={props.onClickFavorite}>
-                <img src="/img/heart-unliked.svg" alt="Unliked" />
+            <div className={styles.favorite} onClick={onClickFavorite}>
+                <img src={isAddedFavorite ? "/img/heart-liked.svg" : "/img/heart-unliked.svg"} alt="Unliked" />
             </div>
             
             <img src={props.imageUrl} style={{ width: 133, height: 112 }} alt="Sneakers" />
