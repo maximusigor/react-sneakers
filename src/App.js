@@ -1,47 +1,45 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import Card from './components/Card';
-import Header from './components/Header';
-import Drawer from './components/Drawer';
+import { useEffect, useMemo, useState } from "react";
+import Card from "./components/Card";
+import Header from "./components/Header";
+import Drawer from "./components/Drawer";
 
-const arr = [
-  {
-    title: 'Чоловічі кросівки Nike Blazer Mid Suede',
-    price: 3999,
-    imageUrl: './img/sneakers/1.jpg',
-  },
-  {
-    title: 'Чоловічі кросівки Nike Air Max 270',
-    price: 2499,
-    imageUrl: './img/sneakers/2.jpg'
-  },
-  {
-    title: 'Чоловічі кросівки Nike Blazer Mid Suede',
-    price: 2589,
-    imageUrl: './img/sneakers/3.jpg',
-  },
-  {
-    title: 'Чоловічі кросівки Puma X Aka Boku Future Rider',
-    price: 4129,
-    imageUrl: './img/sneakers/4.jpg'
-  },
-];
 
 function App() {
-  const [search, setSearch] = useState('');
+  const [items, setItems] = useState();
+  const [cartItems, setcartItems] = useState();
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    fetch('https://648edd6975a96b664444627e.mockapi.io/items').then((res) => {
+      return res.json();
+    }).then(json => {
+      setItems(json);
+    });
+  }, []);
+
+
+
   // const [chooses, setChooses] = useState([]);
-  //
+
   // useEffect(() => {
-  //   setChooses(arr.filter((item) => item.title.includes(search)))
+  //   setChooses(chooses.filter((item) => item.title.includes(search)))
   // }, [search])
 
-  const chooses = useMemo(() => {
-     return arr.filter((item) => item.title.includes(search))
-  }, [search]);
+  // const chooses = useMemo(() => {
+  //    return items.filter((item) => item.title.includes(search))
+  // }, [search]);
+
+  const [cartOpened, setCartOpened] = useState(false);
+
+  const onAddToCart = () => {
+    alert('Done');
+  }
 
   return (
     <div className="wrapper clear">
-      <Drawer />
-      <Header />
+
+      {cartOpened && <Drawer items={cartItems} onClose={() => setCartOpened(false)} />}
+      <Header onClickCart={() => setCartOpened(true)} />
 
       <div className="content p-40">
 
@@ -53,14 +51,14 @@ function App() {
           </div>
         </div>
 
-        <div className="d-flex">
-          {chooses.map(obj => (
+        <div className="d-flex flex-wrap">
+          {items?.map(obj => (
             <Card
               title={obj.title}
               price={obj.price}
               imageUrl={obj.imageUrl}
-              onClickFavorite={() => console.log('Add to bookmarks')}
-              onPlus={() => console.log('Add to cart')}
+              onFavorite={() => console.log("Add to bookmarks")}
+              onPlus={onAddToCart}
             />
           ))}
         </div>
