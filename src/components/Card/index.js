@@ -14,7 +14,6 @@ function Card(props) {
         setIsAddedFavorite(true);
     }
 
-    
     return (
         <div className={styles.card}>
 
