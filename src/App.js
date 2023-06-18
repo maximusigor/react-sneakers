@@ -32,8 +32,6 @@ function App() {
     setCartItems([...cartItems, obj]);
   };
 
-  console.log(cartItems);
-
   return (
     <div className="wrapper clear">
 
