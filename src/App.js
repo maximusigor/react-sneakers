@@ -5,8 +5,9 @@ import Drawer from "./components/Drawer";
 
 
 function App() {
-  const [items, setItems] = useState();
-  const [cartItems, setcartItems] = useState();
+  const [items, setItems] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
+  const [cartOpened, setCartOpened] = useState(false);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
@@ -16,8 +17,6 @@ function App() {
       setItems(json);
     });
   }, []);
-
-
 
   // const [chooses, setChooses] = useState([]);
 
@@ -29,11 +28,11 @@ function App() {
   //    return items.filter((item) => item.title.includes(search))
   // }, [search]);
 
-  const [cartOpened, setCartOpened] = useState(false);
+  const onAddToCart = (obj) => {
+    setCartItems([...cartItems, obj]);
+  };
 
-  const onAddToCart = () => {
-    alert('Done');
-  }
+  console.log(cartItems);
 
   return (
     <div className="wrapper clear">
@@ -52,13 +51,13 @@ function App() {
         </div>
 
         <div className="d-flex flex-wrap">
-          {items?.map(obj => (
+          {items.map(item => (
             <Card
-              title={obj.title}
-              price={obj.price}
-              imageUrl={obj.imageUrl}
+              title={item.title}
+              price={item.price}
+              imageUrl={item.imageUrl}
               onFavorite={() => console.log("Add to bookmarks")}
-              onPlus={onAddToCart}
+              onPlus={(obj) => onAddToCart(obj)}
             />
           ))}
         </div>
