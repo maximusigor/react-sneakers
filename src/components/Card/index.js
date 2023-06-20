@@ -20,10 +20,10 @@ function Card({imageUrl, title, price, onPlus, onFavorite}) {
         <div className={styles.card}>
 
             <div className={styles.favorite} onClick={onClickFavorite}>
-                <img src={isAddedFavorite ? "/img/heart-liked.svg" : "/img/heart-unliked.svg"} alt="Unliked" />
+                <img src={isAddedFavorite ? "/img/heart-liked.svg" : "/img/heart-unliked.svg"} alt="unliked" />
             </div>
             
-            <img src={imageUrl} style={{ width: 133, height: 112 }} alt="Sneakers" />
+            <img src={imageUrl} style={{ width: 133, height: 112 }} alt="sneakers" />
             <h5>{title}</h5>
             <div className="d-flex justify-between align-center">
                 <div className="d-flex flex-column">
