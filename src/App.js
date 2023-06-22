@@ -37,8 +37,8 @@ function App() {
   };
 
   const onAddToFavorite = (obj) => {
-    axios.post('https://648edd6975a96b664444627e.mockapi.io/cart', obj);
-    setCartItems((prev) => [...prev, obj]);
+    axios.post('https://64922fa2428c3d2035cff609.mockapi.io/favorites', obj);
+    setFavorites((prev) => [...prev, obj]);
   };
 
   const onChangeSearchInput = (event) => {
@@ -69,6 +69,7 @@ function App() {
               title={item.title}
               price={item.price}
               imageUrl={item.imageUrl}
+              onFavorite={(obj) => onAddToFavorite(obj)}
               onPlus={(obj) => onAddToCart(obj)}
             />
           ))}
