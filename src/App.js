@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import Card from "./components/Card";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
@@ -19,7 +20,8 @@ function App() {
     //   setItems(json);
     // });
     axios.get('https://648edd6975a96b664444627e.mockapi.io/items').then((res) => {
-      setItems(res.data)});
+      setItems(res.data)
+    });
     axios.get('https://648edd6975a96b664444627e.mockapi.io/cart').then((res) => {
       setCartItems(res.data);
     });
@@ -48,8 +50,12 @@ function App() {
   return (
     <div className="wrapper clear">
 
-      {cartOpened && <Drawer items={cartItems} onClose={() => setCartOpened(false)} onRemove={onRemoveItem}  />}
+      {cartOpened && <Drawer items={cartItems} onClose={() => setCartOpened(false)} onRemove={onRemoveItem} />}
       <Header onClickCart={() => setCartOpened(true)} />
+
+      <Routes>
+        <Route path='/test'> Test Information </Route>
+      </Routes>
 
       <div className="content p-40">
 
