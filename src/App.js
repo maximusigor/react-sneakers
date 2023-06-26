@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import Card from "./components/Card";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
@@ -53,9 +53,13 @@ function App() {
       {cartOpened && <Drawer items={cartItems} onClose={() => setCartOpened(false)} onRemove={onRemoveItem} />}
       <Header onClickCart={() => setCartOpened(true)} />
 
-      <Routes>
-        <Route path='/test'> Test Information </Route>
-      </Routes>
+      {/* <BrowserRouter>
+        
+          <Route path="/test">
+          Test Information
+          </Route>
+        
+      </BrowserRouter> */}
 
       <div className="content p-40">
 
