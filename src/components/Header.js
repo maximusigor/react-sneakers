@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 function Header(props) {
     return (
         <header className="d-flex justify-between align-center p-40">
-            
-            <Link to="/favorites">
+
+            <Link to="/">
             <div className="d-flex align-center">
             <img width = {40} height={40} src='/img/logo.png' alt="logotype" />
             <div>
