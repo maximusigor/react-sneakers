@@ -30,6 +30,7 @@ function App() {
       setFavorites(res.data);
     });
   }, []);
+  
 
   const onAddToCart = (obj) => {
     axios.post('https://648edd6975a96b664444627e.mockapi.io/cart', obj);
