@@ -43,11 +43,15 @@ function App() {
   };
 
   const onAddToFavorite = async (obj) => {
-    if(favorites.find((favObj) => favObj.id === obj.id)) {
-      axios.delete(`https://64922fa2428c3d2035cff609.mockapi.io/favorites/${obj.id}`);
-    } else {
-        const {data} = await axios.post('https://64922fa2428c3d2035cff609.mockapi.io/favorites', obj);
-        setFavorites((prev) => [...prev, data]);
+    try {
+      if(favorites.find((favObj) => favObj.id === obj.id)) {
+        axios.delete(`https://64922fa2428c3d2035cff609.mockapi.io/favorites/${obj.id}`);
+      } else {
+          const {data} = await axios.post('https://64922fa2428c3d2035cff609.mockapi.io/favorites', obj);
+          setFavorites((prev) => [...prev, data]);
+      }
+    } catch (error) {
+      alert("Не вийшло додати до збережених, спробуйте ще раз.")
     }
   };
 
